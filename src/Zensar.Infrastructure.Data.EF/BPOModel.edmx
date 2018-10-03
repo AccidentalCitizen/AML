@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BPOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BPO_Entity">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="entity_id" Type="varchar(max)" />
+          <Property Name="entity_name" Type="varchar(max)" />
+          <Property Name="sanctions_descr" Type="varchar(max)" />
+          <Property Name="sanctions_references" Type="varchar(max)" />
+          <Property Name="company_country" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="BPO_Person">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="person_id" Type="varchar(max)" />
+          <Property Name="date_year" Type="varchar(max)" />
+          <Property Name="gender" Type="varchar(max)" />
+          <Property Name="person_namex" Type="varchar(max)" />
+          <Property Name="sanctions_descr" Type="varchar(max)" />
+          <Property Name="sanctions_references" Type="varchar(max)" />
+          <Property Name="country_code" Type="varchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BPO.fct.BPO_Entity' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="BPO_Entity1">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="entity_id" />
+            <PropertyRef Name="entity_name" />
+            <PropertyRef Name="sanctions_descr" />
+            <PropertyRef Name="sanctions_references" />
+            <PropertyRef Name="company_country" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="entity_id" Type="varchar(max)" Nullable="false" />
+          <Property Name="entity_name" Type="varchar(max)" Nullable="false" />
+          <Property Name="sanctions_descr" Type="varchar(max)" Nullable="false" />
+          <Property Name="sanctions_references" Type="varchar(max)" Nullable="false" />
+          <Property Name="company_country" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BPO.fct.BPO_Person' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="BPO_Person1">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="person_id" />
+            <PropertyRef Name="date_year" />
+            <PropertyRef Name="gender" />
+            <PropertyRef Name="person_namex" />
+            <PropertyRef Name="sanctions_descr" />
+            <PropertyRef Name="sanctions_references" />
+            <PropertyRef Name="country_code" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="person_id" Type="varchar(max)" Nullable="false" />
+          <Property Name="date_year" Type="int" Nullable="false" />
+          <Property Name="gender" Type="varchar(max)" Nullable="false" />
+          <Property Name="person_namex" Type="varchar(max)" Nullable="false" />
+          <Property Name="sanctions_descr" Type="varchar(max)" Nullable="false" />
+          <Property Name="sanctions_references" Type="varchar(max)" Nullable="false" />
+          <Property Name="country_code" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BPOtransferStageLogtbl">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="date" />
+          <Property Name="ErrorStage" Type="varchar(max)" />
+          <Property Name="ErrorMessage" Type="varchar(max)" />
+          <Property Name="ErrorProbableCause" Type="varchar(max)" />
+        </EntityType>
+        <Function Name="EntityTransferPROC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="PersonTransferPROC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="BPOModelStoreContainer">
+          <EntitySet Name="BPO_Entity" EntityType="Self.BPO_Entity" Schema="data" store:Type="Tables" />
+          <EntitySet Name="BPO_Person" EntityType="Self.BPO_Person" Schema="data" store:Type="Tables" />
+          <EntitySet Name="BPOtransferStageLogtbl" EntityType="Self.BPOtransferStageLogtbl" Schema="log" store:Type="Tables" />
+          <EntitySet Name="BPO_Entity1" EntityType="Self.BPO_Entity1" store:Type="Tables" store:Schema="fct" store:Name="BPO_Entity">
+            <DefiningQuery>SELECT 
+[BPO_Entity1].[ID] AS [ID], 
+[BPO_Entity1].[entity_id] AS [entity_id], 
+[BPO_Entity1].[entity_name] AS [entity_name], 
+[BPO_Entity1].[sanctions_descr] AS [sanctions_descr], 
+[BPO_Entity1].[sanctions_references] AS [sanctions_references], 
+[BPO_Entity1].[company_country] AS [company_country]
+FROM [fct].[BPO_Entity] AS [BPO_Entity1]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="BPO_Person1" EntityType="Self.BPO_Person1" store:Type="Tables" store:Schema="fct" store:Name="BPO_Person">
+            <DefiningQuery>SELECT 
+[BPO_Person1].[ID] AS [ID], 
+[BPO_Person1].[person_id] AS [person_id], 
+[BPO_Person1].[date_year] AS [date_year], 
+[BPO_Person1].[gender] AS [gender], 
+[BPO_Person1].[person_namex] AS [person_namex], 
+[BPO_Person1].[sanctions_descr] AS [sanctions_descr], 
+[BPO_Person1].[sanctions_references] AS [sanctions_references], 
+[BPO_Person1].[country_code] AS [country_code]
+FROM [fct].[BPO_Person] AS [BPO_Person1]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BPOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BPO_Entity">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="entity_id" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="entity_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="sanctions_descr" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="sanctions_references" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="company_country" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="BPOEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BPO_Entity" EntityType="Self.BPO_Entity" />
+          <EntitySet Name="BPO_Person" EntityType="BPOModel.BPO_Person" />
+          <EntitySet Name="BPO_Entity1" EntityType="BPOModel.BPO_Entity1" />
+          <EntitySet Name="BPO_Person1" EntityType="BPOModel.BPO_Person1" />
+          <FunctionImport Name="EntityTransferPROC" />
+          <FunctionImport Name="PersonTransferPROC" />
+          <EntitySet Name="BPOtransferStageLogtbls" EntityType="BPOModel.BPOtransferStageLogtbl" />
+        </EntityContainer>
+        <EntityType Name="BPO_Person">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="person_id" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="date_year" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="gender" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="person_namex" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="sanctions_descr" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="sanctions_references" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="country_code" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="BPO_Entity1">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="entity_id" />
+            <PropertyRef Name="entity_name" />
+            <PropertyRef Name="sanctions_descr" />
+            <PropertyRef Name="sanctions_references" />
+            <PropertyRef Name="company_country" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="entity_id" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="entity_name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="sanctions_descr" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="sanctions_references" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="company_country" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="BPO_Person1">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="person_id" />
+            <PropertyRef Name="date_year" />
+            <PropertyRef Name="gender" />
+            <PropertyRef Name="person_namex" />
+            <PropertyRef Name="sanctions_descr" />
+            <PropertyRef Name="sanctions_references" />
+            <PropertyRef Name="country_code" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="person_id" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="date_year" Type="Int32" Nullable="false" />
+          <Property Name="gender" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="person_namex" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="sanctions_descr" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="sanctions_references" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="country_code" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="BPOtransferStageLogtbl">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="ErrorStage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ErrorMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ErrorProbableCause" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BPOModelStoreContainer" CdmEntityContainer="BPOEntities">
+          <EntitySetMapping Name="BPO_Entity">
+            <EntityTypeMapping TypeName="BPOModel.BPO_Entity">
+              <MappingFragment StoreEntitySet="BPO_Entity">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="entity_id" ColumnName="entity_id" />
+                <ScalarProperty Name="entity_name" ColumnName="entity_name" />
+                <ScalarProperty Name="sanctions_descr" ColumnName="sanctions_descr" />
+                <ScalarProperty Name="sanctions_references" ColumnName="sanctions_references" />
+                <ScalarProperty Name="company_country" ColumnName="company_country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BPO_Person">
+            <EntityTypeMapping TypeName="BPOModel.BPO_Person">
+              <MappingFragment StoreEntitySet="BPO_Person">
+                <ScalarProperty Name="country_code" ColumnName="country_code" />
+                <ScalarProperty Name="sanctions_references" ColumnName="sanctions_references" />
+                <ScalarProperty Name="sanctions_descr" ColumnName="sanctions_descr" />
+                <ScalarProperty Name="person_namex" ColumnName="person_namex" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="date_year" ColumnName="date_year" />
+                <ScalarProperty Name="person_id" ColumnName="person_id" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BPO_Entity1">
+            <EntityTypeMapping TypeName="BPOModel.BPO_Entity1">
+              <MappingFragment StoreEntitySet="BPO_Entity1">
+                <ScalarProperty Name="company_country" ColumnName="company_country" />
+                <ScalarProperty Name="sanctions_references" ColumnName="sanctions_references" />
+                <ScalarProperty Name="sanctions_descr" ColumnName="sanctions_descr" />
+                <ScalarProperty Name="entity_name" ColumnName="entity_name" />
+                <ScalarProperty Name="entity_id" ColumnName="entity_id" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BPO_Person1">
+            <EntityTypeMapping TypeName="BPOModel.BPO_Person1">
+              <MappingFragment StoreEntitySet="BPO_Person1">
+                <ScalarProperty Name="country_code" ColumnName="country_code" />
+                <ScalarProperty Name="sanctions_references" ColumnName="sanctions_references" />
+                <ScalarProperty Name="sanctions_descr" ColumnName="sanctions_descr" />
+                <ScalarProperty Name="person_namex" ColumnName="person_namex" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="date_year" ColumnName="date_year" />
+                <ScalarProperty Name="person_id" ColumnName="person_id" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="EntityTransferPROC" FunctionName="BPOModel.Store.EntityTransferPROC" />
+          <FunctionImportMapping FunctionImportName="PersonTransferPROC" FunctionName="BPOModel.Store.PersonTransferPROC" />
+          <EntitySetMapping Name="BPOtransferStageLogtbls">
+            <EntityTypeMapping TypeName="BPOModel.BPOtransferStageLogtbl">
+              <MappingFragment StoreEntitySet="BPOtransferStageLogtbl">
+                <ScalarProperty Name="ErrorProbableCause" ColumnName="ErrorProbableCause" />
+                <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+                <ScalarProperty Name="ErrorStage" ColumnName="ErrorStage" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7D85ADB0-3B62-4914-9239-3F78367C8AB6}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>FileFixerEXE</RootNamespace>
+    <AssemblyName>FileFixerEXE</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Zensar.Common\Zensar.Common.csproj">
+      <Project>{7ed9331a-60e3-401a-92e1-ed3f0cda8a24}</Project>
+      <Name>Zensar.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zensar.DependencyResolution\Zensar.DependencyResolution.csproj">
+      <Project>{697e7354-b062-40a3-be47-89753cdcbdea}</Project>
+      <Name>Zensar.DependencyResolution</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zensar.Domain\Zensar.Domain.csproj">
+      <Project>{51d49462-7747-4239-961a-a48b74b33e2e}</Project>
+      <Name>Zensar.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zensar.Formatting\Zensar.Formatting.csproj">
+      <Project>{6f989f89-c789-468f-8ced-37d6f796c6ca}</Project>
+      <Name>Zensar.Formatting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zensar.Infrastructure.Connections\Zensar.Infrastructure.Connections.csproj">
+      <Project>{990cb0a5-881b-42e0-a0d1-85464751194f}</Project>
+      <Name>Zensar.Infrastructure.Connections</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zensar.Infrastructure.Data\Zensar.Infrastructure.Data.csproj">
+      <Project>{c2cf0d2d-2229-4440-ac43-f369e227fe06}</Project>
+      <Name>Zensar.Infrastructure.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zensar.Infrastructure.Readers\Zensar.Infrastructure.Readers.csproj">
+      <Project>{8b5f8c9f-7dad-4698-92b3-d94a207a671e}</Project>
+      <Name>Zensar.Infrastructure.Readers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zensar.Infrastructure.Writers\Zensar.Infrastructure.Writers.csproj">
+      <Project>{a105c77d-bdad-431f-9e39-16b65c785d6a}</Project>
+      <Name>Zensar.Infrastructure.Writers</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
